@@ -14,10 +14,10 @@ const App = () => {
   }
   
   return (
-    <div>
+    <div className="container">
       <Input placeholder="Enter something..." onChange={handleInputChange} />
       <Button text="Click me" onClick={handleButtonClick} />
-      <p>Input value: {inputValue}</p>
+      <p className="description">Input value: {inputValue}</p>
     </div>
   );
 }
