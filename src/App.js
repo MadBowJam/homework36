@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Button from './components/Button';
 import Input from './components/Input';
+import Counter from './components/Counter';
+import Greetings from './components/Greetings';
+import ClassCounter from './components/ClassCounter';
 
 const App = () => {
   const [inputValue, setInputValue] = useState('');
@@ -18,6 +21,11 @@ const App = () => {
       <Input placeholder="Enter something..." onChange={handleInputChange} />
       <Button text="Click me" onClick={handleButtonClick} />
       <p className="description">Input value: {inputValue}</p>
+      <Counter />
+      <hr />
+      <Greetings name="John" />
+      <hr />
+      <ClassCounter />
     </div>
   );
 }
