@@ -7,6 +7,7 @@
 import ControlledForm from './components/ControlledForm';
 import UncontrolledForm from './components/UncontrolledForm';
 import DataFetchingComponent from './components/DataFetchingComponent';
+import UserDataComponent from './components/UserDataComponent';
 // import SteamMarketData from "./components/SteamMarketData";
 
 const App = () => {
@@ -38,6 +39,8 @@ const App = () => {
       <DataFetchingComponent />
       {/*<hr />*/}
       {/*<SteamMarketData />*/}
+      <hr />
+      <UserDataComponent />
     </div>
   );
 };
