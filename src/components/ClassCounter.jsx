@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
+// components/ClassCounter.js
 
-class ClassCounter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0
-    };
-  }
-  
-  increment = () => {
-    this.setState({ count: this.state.count + 1 });
-  };
-  
-  render() {
-    return (
-      <div>
-        <h2>Class-based Component: ClassCounter</h2>
-        <p>Clicked {this.state.count} times</p>
-        <button onClick={this.increment}>Increment</button>
-      </div>
-    );
-  }
-}
+import React from 'react';
+import { connect } from 'react-redux';
+import { increment, decrement } from '../actions/counterActions';
 
-export default ClassCounter;
+const ClassCounter = ({ count, increment, decrement }) => {
+  return (
+    <div className="container">
+      <h2 className="title">Class-based Component: ClassCounter</h2>
+      <p className="description">Clicked {count} times</p>
+      <button className="button" onClick={increment}>Increment</button>
+      <button className="button" onClick={decrement}>Decrement</button>
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  count: state.counter.count
+});
+
+export default connect(mapStateToProps, { increment, decrement })(ClassCounter);
