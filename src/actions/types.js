@@ -1,3 +1,3 @@
-// Типи дій
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+  // Типи дій
+  export const INCREMENT = 'INCREMENT';
+  export const DECREMENT = 'DECREMENT';
