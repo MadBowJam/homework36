@@ -1,6 +1,8 @@
+// src/components/ClassCounter.js
+
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../actions/counterActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from '../features/counterSlice';
 
 const ClassCounter = () => {
   const count = useSelector(state => state.counter.count);
