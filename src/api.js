@@ -1,7 +1,7 @@
 // api.js
-export const fetchDataFromApi = async (currentPage) => {
+export const fetchDataFromApi = async (currentPage, pageSize) => {
   try {
-    const nextPageUrl = `https://www.omdbapi.com/?s=iron&page=${currentPage}&apikey=678c5362`;
+    const nextPageUrl = `https://www.omdbapi.com/?s=iron&page=${currentPage}&apikey=678c5362&pageSize=${pageSize}`;
     const response = await fetch(nextPageUrl);
     if (!response.ok) {
       throw new Error('Failed to fetch data');
