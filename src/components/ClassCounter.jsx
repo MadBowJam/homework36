@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDataRequest, fetchDataSuccess, fetchDataFailure } from '../features/counterSlice';
+import { fetchDataSuccess, fetchDataFailure } from '../features/counterSlice';
 import { fetchDataFromApi } from '../api';
 
 const ClassCounter = () => {
