@@ -7,6 +7,7 @@ export const counterSlice = createSlice({
     loading: false,
     error: null,
     data: null,
+    count: 0 // Додаємо нове поле count до початкового стану
   },
   reducers: {
     increment: state => {
@@ -27,9 +28,15 @@ export const counterSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-  },
+    incrementCount: state => {
+      state.count += 1;
+    },
+    decrementCount: state => {
+      state.count -= 1;
+    }
+  }
 });
 
-export const { increment, decrement, fetchDataRequest, fetchDataSuccess, fetchDataFailure } = counterSlice.actions;
+export const { increment, decrement, fetchDataRequest, fetchDataSuccess, fetchDataFailure, incrementCount, decrementCount } = counterSlice.actions;
 
 export default counterSlice.reducer;
