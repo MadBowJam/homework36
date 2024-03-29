@@ -1,12 +1,13 @@
 // api.js
-export const fetchData = async () => {
+export const fetchDataFromApi = async (currentPage) => {
   try {
-    const response = await fetch('https://www.omdbapi.com/?s=iron&page=1&apikey=678c5362');
+    const nextPageUrl = `https://www.omdbapi.com/?s=iron&page=${currentPage}&apikey=678c5362`;
+    const response = await fetch(nextPageUrl);
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
     const data = await response.json();
-    console.log('Received data:', data); // Вивести отримані дані у консоль
+    console.log('Received data:', data);
     return data;
   } catch (error) {
     throw new Error('Failed to fetch data');

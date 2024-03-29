@@ -1,27 +1,26 @@
-import React, { useEffect } from 'react';
+// ClassCounter.jsx
+
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataRequest, fetchDataSuccess, fetchDataFailure } from '../features/counterSlice';
-import { fetchData } from '../api'; // Імпортуйте функцію fetchData з вашого файлу api.js
+import { fetchDataFromApi } from '../api';
 
 const ClassCounter = () => {
   const dispatch = useDispatch();
   const data = useSelector(state => state.counter.data);
   const loading = useSelector(state => state.counter.loading);
   const error = useSelector(state => state.counter.error);
+  const [currentPage, setCurrentPage] = useState(1);
   
   useEffect(() => {
-    const fetchDataFromApi = async () => {
-      dispatch(fetchDataRequest());
-      try {
-        const responseData = await fetchData();
-        dispatch(fetchDataSuccess(responseData));
-      } catch (error) {
-        dispatch(fetchDataFailure(error.message));
-      }
-    };
-    
-    fetchDataFromApi();
-  }, [dispatch]);
+    fetchDataFromApi(currentPage)
+      .then(responseData => dispatch(fetchDataSuccess(responseData)))
+      .catch(error => dispatch(fetchDataFailure(error.message)));
+  }, [currentPage, dispatch]);
+  
+  const handleNextPage = () => {
+    setCurrentPage(prevPage => prevPage + 1);
+  };
   
   if (loading) {
     return <div>Loading...</div>;
@@ -40,6 +39,7 @@ const ClassCounter = () => {
           <p>Type: {item.Type}</p>
         </div>
       ))}
+      <button onClick={handleNextPage}>Далі</button>
     </div>
   );
 };
